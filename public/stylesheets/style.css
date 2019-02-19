@@ -1,0 +1,42 @@
+body{
+  background-color: #e6e6e6;
+}
+
+li{
+  list-style: none;
+  padding-left: 5%;
+}
+
+input{
+  width: 33%;
+  border-radius: 5px;
+}
+
+form{
+  padding-top: 4%;
+}
+
+.jumbotron{
+  background-color:  #fff;
+  padding: 3% 5%;
+}
+
+.btnEdit{
+  width: 28%;
+  margin-left: 5%;
+}
+
+.btnSend{
+  margin: 3% 0%;
+  background-color: #2e8ae6;
+}
+
+#mainContent{
+
+  margin:2% 15%;
+  padding: 2% 5%;
+  background-color: #404040;
+  border-radius:20px;
+  color: #fff;
+
+}

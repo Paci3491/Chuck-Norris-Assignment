@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <title> Chuck Norris Joke </title>
+</head>
+
+<body>
+<div class="jumbotron jumbotron-fluid">
+  <div>
+    <h1 class="display-8">Hello Dear User</h1>
+    <p class="lead">You can send a random joke about Chuck Norris to your friends. The one for today is: </p>
+    <p><%=joke%></p>
+  </div>
+</div>
+
+<div id="mainContent">
+  <h2> Preset email adresses: </h2>
+  <h6>There are several default mail adresses. If you wish to change them, you can do so in the menu below.</h6>
+  <form method="post" enctype="application/x-www-form-urlencoded">
+    <input type="hidden" value="<%=joke%>" name="joke">
+
+    <div id="emailEntries">
+      <% for( var j = 0; j < emails.length;j++){ %>
+      <div class="input-group mb-3">
+        <input type="email" name="emails[]" class="form-control" value="<%=emails[j]%>" aria-label="Recipient's username" aria-describedby="button-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary btn-remove" type="button">Delete</button>
+        </div>
+      </div>
+      <% } %>
+    </div>
+
+    <div>
+      <button type="button" class="btn btn-secondary btn-lg btn-block btn-success btn-add">Add</button>
+      <button type="submit" class="btn btn-secondary btn-lg btn-block btnSend" >Send</button>
+    </div>
+  </form>
+</div>
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+<script>
+  $(function() {
+    $(document).on('click', '.btn-add', function(e) {
+      e.preventDefault();
+
+      var controlDiv = $('#emailEntries')
+      var currentEntry = controlDiv.children('.input-group:first')
+      var newEntry = $(currentEntry.clone()).appendTo(controlDiv);
+
+      newEntry.find('input').val('');
+    }).on('click', '.btn-remove', function(e) {
+      $(this).parents('.input-group:first').remove();
+      e.preventDefault();
+      return false;
+    });
+  });
+</script>
+
+
+</body>
+</html>
